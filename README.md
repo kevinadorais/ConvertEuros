@@ -7,4 +7,5 @@ This app is used to convert the euro into several currencies.
 You can have npm installed.<br>
 <a href="https://nodejs.org/fr/">Site de Node</a>
 
-install the dependances.
+install the dependancies.<br>
+<b>npm install</b>
