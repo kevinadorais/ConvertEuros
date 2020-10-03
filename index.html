@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Convertisseur EURO</title>
+        <script type:"text/javascript" src="node_modules/vue/dist/vue.js"></script>
+        <script type:"text/javascript" src="node_modules/lodash/lodash.js"></script>
+        <script type:"text/javascript" src="node_modules/vue-resource/dist/vue-resource.js"></script>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <h1>Convertisseur EURO</h1>
+            <p>
+              EUR à changer :
+              <input v-model="number">
+            </p>
+            <p>{{ conversion }}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Monnaie</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Baht (Thailande)</td>
+                        <td>{{ baht }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dinar Tunisien (Tunisie)</td>
+                        <td>{{ dinar }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dollar Americain (USA)</td>
+                        <td>{{ dollarUSD }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dollar Canadien (Canada)</td>
+                        <td>{{ dollarCAD }}</td>
+                    </tr>
+                    <tr>
+                        <td>Euro (Europe)</td>
+                        <td>{{ euro }}</td>
+                    </tr>
+                    <tr>
+                        <td>Franc Suisse (Suisse)</td>
+                        <td>{{ francCHF }}</td>
+                    </tr>
+                    <tr>
+                        <td>Livre Sterling (Royaume Uni)</td>
+                        <td>{{ livreSterling }}</td>
+                    </tr>
+                    <tr>
+                        <td>Rouble Russe (Russie)</td>
+                        <td>{{ rouble }}</td>
+                    </tr>
+                    <tr>
+                        <td>Yen (Japon)</td>
+                        <td>{{ yen }}</td>
+                    </tr>
+                    <tr>
+                        <td>Yuan (Chine)</td>
+                        <td>{{ yuan }}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        <script type:"text/javascript" src="index.js"></script>
+    </body>
+</html>
