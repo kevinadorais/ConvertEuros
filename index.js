@@ -5,24 +5,58 @@ new Vue ({
     data: {
         number: "",
         conversion: "\"Veuillez entrer un nombre\"",
-        txDollarUSD: "",
-        txDollarCAD: "",
-        txLivreSterling: "",
-        txfrancCHF: "",
-        txRouble: "",
-        txYen: "",
-        txYuan: "",
-        txBaht: "",
-        euro: "???",
-        dollarUSD: "???",
-        dollarCAD: "???",
-        livreSterling: "???",
-        francCHF: "???",
-        rouble: "???",
-        yen: "???",
-        yuan: "???",
-        dinar: "???",
-        baht: "???",
+        montant: {
+          THB: {
+            pays: "Baht (Thailande)",
+            conversion: "???",
+            taux: ""
+          },
+          TND: {
+            pays: "Dinar Tunisien(Tunisie)",
+            conversion: "???",
+            taux: ""
+          },
+          USD: {
+            pays: "Dollar Américain (Etats-Unis)",
+            conversion: "???",
+            taux: ""
+          },
+          CAD: {
+            pays: "Dollar Canadien (Canada)",
+            conversion: "???",
+            taux: ""
+          },
+          EUR: {
+            pays: "Euro (Europe)",
+            conversion: "???",
+            taux: ""
+          },
+          CHF: {
+            pays: "Franc Suisse (Suisse)",
+            conversion: "???",
+            taux: ""
+          },
+          GBP: {
+            pays: "Livre Sterling (Royaume-Uni)",
+            conversion: "???",
+            taux: ""
+          },
+          RUB: {
+            pays: "Rouble Russe (Russie)",
+            conversion: "???",
+            taux: ""
+          },
+          JPY: {
+            pays: "Yen (Japon)",
+            conversion: "???",
+            taux: ""
+          },
+          CNY: {
+            pays: "Yuan (Chine)",
+            conversion: "???",
+            taux: ""
+          }
+        }
     },
     watch: {
         number(){
@@ -44,24 +78,26 @@ new Vue ({
             this.euro= this.number
             this.$http.get('https://api.exchangeratesapi.io/latest')
               .then(function (response) {
-                this.txDollarUSD = response.body.rates.USD;
-                this.txDollarCAD = response.body.rates.CAD;
-                this.txLivreSterling = response.body.rates.GBP;
-                this.txfrancCHF = response.body.rates.CHF;
-                this.txRouble = response.body.rates.RUB;
-                this.txYen = response.body.rates.JPY;
-                this.txYuan = response.body.rates.CNY;
-                this.txBaht = response.body.rates.THB;
-                this.euro = `${(this.number.replace(',', '.') * 1).toFixed(2)} `;
-                this.dollarUSD = `${(this.txDollarUSD * this.number.replace(',', '.')).toFixed(2)} `;
-                this.dollarCAD = `${(this.txDollarCAD * this.number.replace(',', '.')).toFixed(2)} `;
-                this.livreSterling = `${(this.txLivreSterling * this.number.replace(',', '.')).toFixed(2)} `;
-                this.francCHF = `${(this.txfrancCHF * this.number.replace(',', '.')).toFixed(2)} `;
-                this.rouble = `${(this.txRouble * this.number.replace(',', '.')).toFixed(2)} `;
-                this.yen = `${(this.txYen * this.number.replace(',', '.')).toFixed(2)} `;
-                this.yuan = `${(this.txYuan * this.number.replace(',', '.')).toFixed(2)} `;
-                this.baht = `${(this.txBaht * this.number.replace(',', '.')).toFixed(2)} `;
-                this.dinar = `${(this.number.replace(',', '.') * 3.24).toFixed(2)} `;
+                this.montant.CAD.taux = response.body.rates.CAD;
+                this.montant.CHF.taux = response.body.rates.CHF;
+                this.montant.CNY.taux = response.body.rates.CNY;
+                this.montant.EUR.taux = 1;
+                this.montant.GBP.taux = response.body.rates.GBP;
+                this.montant.JPY.taux = response.body.rates.JPY;
+                this.montant.RUB.taux = response.body.rates.RUB;
+                this.montant.THB.taux = response.body.rates.THB;
+                this.montant.TND.taux = 3.237;
+                this.montant.USD.taux = response.body.rates.USD;
+                this.montant.CAD.conversion = `${(this.montant.CAD.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.CHF.conversion = `${(this.montant.CHF.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.CNY.conversion = `${(this.montant.CNY.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.EUR.conversion = `${(this.montant.EUR.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.GBP.conversion = `${(this.montant.GBP.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.JPY.conversion = `${(this.montant.JPY.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.RUB.conversion = `${(this.montant.RUB.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.THB.conversion = `${(this.montant.THB.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.TND.conversion = `${(this.montant.TND.taux * this.number.replace(',', '.')).toFixed(2)} `;
+                this.montant.USD.conversion = `${(this.montant.USD.taux * this.number.replace(',', '.')).toFixed(2)} `;
               })
               .catch(function (error) {
                 this.conversion = "Erreur ! Impossible d'accéder à l'API." + error
@@ -69,5 +105,5 @@ new Vue ({
           },
           500
         )
-      }
+    }
 })

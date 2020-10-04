@@ -19,53 +19,20 @@
               <input v-model="number">
             </p>
             <p>{{ conversion }}</p>
+            <p>Les taux présent ci-dessous sont calculés sur la base EURO. Ils sont mis à jour automatiquement sauf pour le Dinar Tunisien. Car non présent sur l'Api Utilisée.</p>
             <table>
                 <thead>
                     <tr>
                         <th>Monnaie</th>
                         <th>Montant</th>
+                        <th>Taux</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Baht (Thailande)</td>
-                        <td>{{ baht }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dinar Tunisien (Tunisie)</td>
-                        <td>{{ dinar }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dollar Americain (USA)</td>
-                        <td>{{ dollarUSD }}</td>
-                    </tr>
-                    <tr>
-                        <td>Dollar Canadien (Canada)</td>
-                        <td>{{ dollarCAD }}</td>
-                    </tr>
-                    <tr>
-                        <td>Euro (Europe)</td>
-                        <td>{{ euro }}</td>
-                    </tr>
-                    <tr>
-                        <td>Franc Suisse (Suisse)</td>
-                        <td>{{ francCHF }}</td>
-                    </tr>
-                    <tr>
-                        <td>Livre Sterling (Royaume Uni)</td>
-                        <td>{{ livreSterling }}</td>
-                    </tr>
-                    <tr>
-                        <td>Rouble Russe (Russie)</td>
-                        <td>{{ rouble }}</td>
-                    </tr>
-                    <tr>
-                        <td>Yen (Japon)</td>
-                        <td>{{ yen }}</td>
-                    </tr>
-                    <tr>
-                        <td>Yuan (Chine)</td>
-                        <td>{{ yuan }}</td>
+                    <tr v-for="montant in montant">
+                        <td>{{montant.pays}}</td>
+                        <td>{{montant.conversion}}</td>
+                        <td>{{montant.taux}}</td>
                     </tr>
                 </tbody>
             </table>
